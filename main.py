@@ -5,7 +5,11 @@ import socket
 
 # import ipaddress module. it lets us use the ipaddress.ip_address(address) method.
 # ipaddress.ip_address(address) tries to instantiate a valid ip address to test.
+# alternatively we can use a regular expression to validate ip addresses.
 import ipaddress
+
+# alternatively you can use a regex pattern to recognize IPv4 addresses.
+# ip_addr_regex = re.compile("^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$")
 
 # import re module. it lets us create regular expressions to make sure the input is correctly formatted.
 import re
@@ -39,10 +43,14 @@ while True:
     try:
         ip_address_obj = ipaddress.ip_address(ip_addr_entered)
         # only executes if ip address is valid.
-        print("You entered a valid ip address.")
+        print("You entered a valid IP address.")
         break
     except:
-        print("You entered an invalid ip address!")
+        print("You entered an invalid IP address!")
+        
+    # alternate option if using IPv4 regex instead of the ipaddress module
+    # if ip_addr_regex.search(ip_addr_entered):
+    #     print(f"{ip_addr_entered} is a valid IP address.")
 
 while True:
     # you can scan every port from 0 to 65535, however it is not advised to scan all ports, since this scanner does NOT use multithreading.
